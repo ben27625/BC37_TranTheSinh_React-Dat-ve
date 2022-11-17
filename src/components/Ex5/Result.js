@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 export class Result extends Component {
   render() {
     // lấy về tách ra
-    const { chairSelectedList , handlePay} = this.props;
+    const {item, chairSelectedList , handlePay, handleRemove } = this.props;
     return (
       <div>
         <h3> Kết quả đặt vé </h3>
@@ -14,7 +14,7 @@ export class Result extends Component {
               <tr>
                 <td>Số Ghế</td>
                 <td>Giá tiền </td>
-
+                <td>Hủy</td>
               </tr>
             </thead>
             <tbody>
@@ -22,8 +22,9 @@ export class Result extends Component {
                 return (
                   <tr key={item.soGhe}>
                     <td>{item.soGhe}</td>
-                    <td>{item.gia}</td>
+                  
                     <td>{item.gia.toLocaleString()}</td>
+                    <td><button className="btn btn-danger" onClick={() => {handleRemove(item)}}> X</button></td>
                   </tr>
                 );
               })}
@@ -61,8 +62,18 @@ const mapDispatchToProps = (dispatch) => {
       dispatch ({
         type: "PAY"
       })
+     
+    },
+    handleRemove: (chair) => {
+      dispatch ({
+        type: "CHANG_CHAIR", 
+        payload: chair,
+      })
+     
     }
   }
 }
+
+
 
 export default connect(mapStateToProps, mapDispatchToProps)(Result);
