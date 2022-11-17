@@ -8,7 +8,7 @@ export class MovieBooking extends Component {
       <div className="container">
         <h2 className="text-center fw-bold my-5">Đặt vé xem phim Cyber</h2>
         <div className="row">
-          <div col-8>
+          <div className="col-8">
             <div className="bg-dark text-white mb-3 text-center fs-4">Screen
             </div>
             <ChairList/>
